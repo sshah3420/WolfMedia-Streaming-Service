@@ -96,4 +96,11 @@ public class getSongsbyAlbumApi {
 			}
 		}
 	}
+	public static void main(String[] args) {
+				System.out.println("Hello");
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("Please enter the Album ID:");
+				int albumId = scanner.nextInt();
+				getSongsbyAlbum(albumId);
+			}
 }

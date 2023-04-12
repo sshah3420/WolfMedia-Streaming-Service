@@ -97,6 +97,16 @@ public class ratingApi {
 		Homework2.enterUpdatePodcastRating(5001, 4.5);
 		
 	}
+	public static void main(String[] args) {
+		
+				System.out.println("Hello");
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("Please enter the Podcast ID:");
+				int podcastId = scanner.nextInt();
+				System.out.println("Please enter the Rating:");
+				Double Rating = scanner.nextDouble();
+				enterUpdatePodcastRating(podcastId, Rating);
+			}
 
 
 }

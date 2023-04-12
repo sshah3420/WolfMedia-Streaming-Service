@@ -96,4 +96,12 @@ public class getEpisodesByPodcast{
 			}
 		}
 	}
+	public static void main(String[] args) {
+		
+				System.out.println("Hello");
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("Please enter the Podcast ID:");
+				int podcastId = scanner.nextInt();
+				getEpisodesByPodcast(podcastId);
+			}
 }

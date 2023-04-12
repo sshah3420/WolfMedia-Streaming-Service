@@ -79,4 +79,13 @@ public class getSongByArtistApi {
             }
         }
     }
+    public static void main(String[] args) {
+
+                System.out.println("Hello");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Please enter the Artist ID:");
+                int artistId = scanner.nextInt();
+                getSongsbyArtist(artistId);
+
+            }
 } 

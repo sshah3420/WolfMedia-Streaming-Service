@@ -75,6 +75,14 @@ public class makeUserSubscriberPaymentsApi {
 			}
 		}
 	}
+    public static void main(String[] args) {
+      
+                System.out.println("Hello");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Please enter the User ID:");
+                int userId = scanner.nextInt();
+                makeUserSubscriberPayments(userId);
+            }
 
     
 }

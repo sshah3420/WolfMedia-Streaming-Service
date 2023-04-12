@@ -119,5 +119,36 @@ public class artistMonthlyListenersApi{
 		
 	}
 
+	public static void main(String[] args) {
+				System.out.println("Hello");
+		
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("Please select an operation:\n1. Enter Artist Monthly Listeners info\n2. Update Artist Monthly Listeners");
+				int choice = scanner.nextInt();
+		
+				switch (choice) {
+					case 1:
+						System.out.println("Please enter the Member ID/ Artist ID:");
+						int artistId = scanner.nextInt();
+						System.out.println("Please enter its Song Count");
+						int song_id = scanner.nextInt();
+						enterArtistMonthlyListeners(artistId, song_id);
+						break;
+					case 2:
+						System.out.println("Please enter the Member ID/ Artist ID:");
+						 int artist_Id = scanner.nextInt();
+						System.out.println("Please enter its Song Count:");
+						int songid = scanner.nextInt();
+						updateArtistMonthlyListeners(artist_Id, songid);
+						break;
+					default:
+						System.out.println("Invalid choice.");
+				}
 
+				// Homework2.enterArtistMonthlyListeners(2001, -99);
+				// Homework2.enterUpdatePodcastRating(5001, 4.5);
+				
+				
+			}
 }
+
