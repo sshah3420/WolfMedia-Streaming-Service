@@ -369,6 +369,106 @@ public class Main {
                     break;
                     
                 case 17:
+                    System.out.println("Payment for Song selected");
+                    System.out.println("   "); 
+                    System.out.println("Please select an operation:\n1. Make Payment for a particular Song\n2. Make Payment for all songs given month");
+            		choice = scanner.nextInt();
+
+            		switch (choice) {
+            			case 1:
+            				System.out.println("Please enter the song_ID: ");
+            			    int song_ID = scanner.nextInt();
+            			    System.out.println("Please enter the month(01-12) :");
+            			    int Month = scanner.nextInt();
+            			    System.out.println("Please enter the year() :");
+            			    int Year = scanner.nextInt();
+            			    SongPaymentAPI.makePaymentGivenSong(song_ID, Month, Year);
+            				break;
+            			case 2:
+            			    System.out.println("Please enter the month(01-12) :");
+            			    int month1 = scanner.nextInt();
+            			    System.out.println("Please enter the year() :");
+            			    int year1 = scanner.nextInt();
+            			    SongPaymentAPI.makeAllSongPayments(month1, year1);
+            				break;
+            			default:
+            				System.out.println("Invalid choice.");
+            		}
+            		
+                    break;
+                    
+                case 18:
+                    System.out.println("Get Monthly Count Per Song/Artist/Album");
+                    System.out.println("   "); 
+                    System.out.println("Please select an operation:\n1. Get Monthly Count per Song \n2. Get Monthly Count Per Artist \n3. Get Monthly Count Per Album");
+            		choice = scanner.nextInt();
+
+            		switch (choice) {
+            			case 1:
+            				System.out.println("Please enter the Song ID: ");
+            			    int Song_id = scanner.nextInt();
+            			    GetMonthlyPlayCount.getMonthlyPlayCountPerSong(Song_id);
+            				break;
+            			case 2:
+            				System.out.println("Please enter the Artist/ Member ID: ");
+            			    int artist_id = scanner.nextInt();
+            			    GetMonthlyPlayCount.getMonthlyPlayCountPerArtist(artist_id);
+            				break;
+            			case 3:
+            				System.out.println("Please enter the Album ID: ");
+            			    int album_id = scanner.nextInt();
+            			    GetMonthlyPlayCount.getMonthlyPlayCountPerAlbum(album_id);
+            				break;
+            				
+            			default:
+            				System.out.println("Invalid choice.");
+            		}
+                    break;
+                    
+                case 19:
+                    System.out.println("Get Payment to Host/ Artist/ Label Selected");
+                    System.out.println("   "); 
+                    System.out.println("Please enter period:");
+        			System.out.println("Enter start month:");
+        			int startMonth = Integer.parseInt(scanner.nextLine());
+        			System.out.println("Enter start year:");
+        			int startYear = Integer.parseInt(scanner.nextLine());
+        			System.out.println("Enter end month:");
+        			int endMonth = Integer.parseInt(scanner.nextLine());
+        			System.out.println("Enter end year:");
+        			int endYear = Integer.parseInt(scanner.nextLine());
+        			
+        			System.out.println("Please enter 1.Host 2.Artist 3.Label:");
+        			choice = scanner.nextInt();
+        			switch(choice) {
+        				case 1:
+        					System.out.println("Enter Host Id to fetch payment record:");
+        					int host_id = scanner.nextInt();
+        					PaymentToHostArtistLabelApi.paidToHost(host_id,startMonth,startYear,endMonth,endYear);
+        					break;
+        					
+        					
+        				case 2:
+        					System.out.println("Enter Artist Id to fetch payment record:");
+        					int artist_id = scanner.nextInt();
+        					PaymentToHostArtistLabelApi.paidToArtist(artist_id,startMonth,startYear,endMonth,endYear);
+        					break;
+        					
+        					
+        				case 3:
+        					System.out.println("Enter Label Id to fetch payment record:");
+        					int label_id = scanner.nextInt();
+        					PaymentToHostArtistLabelApi.paidToLabel(label_id,startMonth,startYear,endMonth,endYear);
+        					break;
+        				
+        				default:
+        					System.out.println("Invalid choice.");
+
+        					
+        			}
+                    break;
+                    
+                case 20:
                     System.out.println("Exiting program...");
                     break;
                     
@@ -376,7 +476,7 @@ public class Main {
                     System.out.println("Invalid choice, please try again");
                     break;
             }
-        } while (choice != 17);
+        } while (choice != 20);
     }
 
     public static int displayMenuAndGetChoice(Scanner scanner) {
@@ -397,7 +497,10 @@ public class Main {
         System.out.println("14. Update Song Play count / Monthly");
         System.out.println("15. Payment to Podcast Host");
         System.out.println("16. Update Podcast Subscriber Count");
-        System.out.println("17. Exit");
+        System.out.println("17. Payment for song");
+        System.out.println("18. Get Monthly Count Per Song/Artist/Album");
+        System.out.println("19. Get Payment to Host/ Artist/ Label");
+        System.out.println("20. Exit");
         System.out.println("   ");
         System.out.print("Enter your choice: ");
         return scanner.nextInt();

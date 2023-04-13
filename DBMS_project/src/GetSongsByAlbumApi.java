@@ -21,7 +21,6 @@ public class GetSongsByAlbumApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 
@@ -49,13 +48,11 @@ public class GetSongsByAlbumApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
 	}
 
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -65,7 +62,6 @@ public class GetSongsByAlbumApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -75,7 +71,6 @@ public class GetSongsByAlbumApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -85,7 +80,6 @@ public class GetSongsByAlbumApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

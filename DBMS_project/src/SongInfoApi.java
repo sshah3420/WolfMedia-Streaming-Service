@@ -20,14 +20,11 @@ public class SongInfoApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			System.out.println("start");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			System.out.println("start2");
 
-			// Query to insert the record into Song table.
 			String insertSql = "INSERT INTO Song (song_ID, title, duration, release_date, language, country, royalty_rate, label_id, album_id, track_num, play_count) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-			// Create PreparedStatement Object for given insert query.
 			ps = connection.prepareStatement(insertSql);
 			ps.setInt(1, songId);
 	        ps.setString(2, title);
@@ -46,7 +43,6 @@ public class SongInfoApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
@@ -56,7 +52,6 @@ public class SongInfoApi {
 	public static void updateSongInfo(int song_id, String column, Object value) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			String updateSql = null;
 			if (column.equals("play_count")) {
@@ -68,16 +63,12 @@ public class SongInfoApi {
 			} else {
 				updateSql = "UPDATE Song SET " + column + " = " + value + " WHERE song_ID = " + song_id;
 			}
-			// Query to update the Article Text.
-			// Create Statement Object.
 			stmt = connection.createStatement();
-			// Execute the update query using Statement object.
 			stmt.execute(updateSql);
 			System.out.println("Song updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -86,26 +77,20 @@ public class SongInfoApi {
 	public static void deleteSongInfo(int song_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-			// Query to delete the record from ARTICLES table.
 			String deleteSql = "DELETE FROM Song WHERE song_ID = " + song_id;
-			// Create Statement Object.
 			stmt = connection.createStatement();
-			// Execute the delete query using Statement object.
 			stmt.executeUpdate(deleteSql);
 			System.out.println("Song Deleted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
 	}
 	
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -115,7 +100,6 @@ public class SongInfoApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -125,7 +109,6 @@ public class SongInfoApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -135,7 +118,6 @@ public class SongInfoApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

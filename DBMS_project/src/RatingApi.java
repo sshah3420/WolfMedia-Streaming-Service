@@ -20,7 +20,6 @@ public class RatingApi {
 	public static void enterUpdatePodcastRating(int podcast_id, double rating) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			String insertSql = "UPDATE Podcast SET rating = ? WHERE podcast_id = ?";
@@ -33,13 +32,11 @@ public class RatingApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
 	}
 
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -49,7 +46,6 @@ public class RatingApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -59,7 +55,6 @@ public class RatingApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -69,7 +64,6 @@ public class RatingApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

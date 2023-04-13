@@ -22,7 +22,6 @@ public class MakeUserSubscriberPaymentsApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			String insertSql = "INSERT INTO User_payment(user_id, amount, is_paid) VALUES (?,10,1);";
@@ -40,13 +39,11 @@ public class MakeUserSubscriberPaymentsApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
             close(ps2);
 			close(connection);
 		}
 	}
-    // method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -56,7 +53,6 @@ public class MakeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -66,7 +62,6 @@ public class MakeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -76,7 +71,6 @@ public class MakeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

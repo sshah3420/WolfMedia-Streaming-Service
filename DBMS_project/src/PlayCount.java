@@ -1,5 +1,3 @@
-//package songApi;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,18 +19,17 @@ public class PlayCount{
 	public static void updatePlayCount(int song_id, int count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
 			String updateSql = "UPDATE Song SET play_count = '" + count + "' WHERE song_ID = " + song_id;
-			// Create Statement Object.
+
 			stmt = connection.createStatement();
 			stmt.execute(updateSql);
 			System.out.println("Song play count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
+
 			close(stmt);
 			close(connection);
 		}
@@ -45,9 +42,9 @@ public class PlayCount{
 	public static void updateSongMonthCount(int song_id, int count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
+
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-//			String currentMonth = new java.text.SimpleDateFormat("yyyy-MM").format(new java.util.Date());
+
 			
 			String updateQuery = "UPDATE Song_month_count SET count = ? WHERE MONTH(timestamp) = MONTH(CURRENT_DATE()) AND YEAR(timestamp) = YEAR(CURRENT_DATE()) AND song_id = ? ";
             PreparedStatement stmt = connection.prepareStatement(updateQuery);
@@ -57,14 +54,10 @@ public class PlayCount{
 
 			stmt.executeUpdate();
 			
-			// Create Statement Object.
-
-			
 			System.out.println("Song monthly play count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -82,7 +75,6 @@ public class PlayCount{
 		
 		
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -92,7 +84,6 @@ public class PlayCount{
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -102,7 +93,6 @@ public class PlayCount{
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

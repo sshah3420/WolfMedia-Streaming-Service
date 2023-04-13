@@ -1,5 +1,3 @@
-//package songApi;
-
 import java.sql.*;
 //import java.util.Scanner;
 import java.time.LocalDateTime;
@@ -18,12 +16,10 @@ public class PodcastHostPayment {
 	public static void makeHostPayment(int host_id, int month, int year) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			String temp = "SELECT * FROM Episode where podcast_id in (SELECT podcast_ID from Podcast where podcast_ID in (Select podcast_ID from Podcast_Has_Host where member_ID = ?)) AND is_paid = 0";
 
 			PreparedStatement stmt = connection .prepareStatement(temp, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
-			// Create Statement Object.
 			stmt.setInt(1, host_id);
 			ResultSet rs = stmt.executeQuery();
 			int totalPaymentAmount = 0;
@@ -43,7 +39,6 @@ public class PodcastHostPayment {
 			
 	        LocalDateTime ldt = LocalDateTime.of(year, month, 1, 0, 0, 0);
 
-	        // Convert the LocalDateTime object to a Timestamp
 	        Timestamp timestamp = Timestamp.valueOf(ldt);
 
 	        String makePayment = "INSERT INTO Podcast_payment (timestamp, amount, is_paid, host_id) values (?, ?, 1, ?)";
@@ -67,7 +62,6 @@ public class PodcastHostPayment {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -85,7 +79,6 @@ public class PodcastHostPayment {
 		
 		
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -95,7 +88,6 @@ public class PodcastHostPayment {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -105,7 +97,6 @@ public class PodcastHostPayment {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

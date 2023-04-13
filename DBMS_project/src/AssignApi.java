@@ -18,12 +18,10 @@ public class AssignApi {
 	public static void assignPodcastHostToPodcast(int memberId, int podcastId) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			
 			System.out.println(connection);
 			
-			// Query to assign the Host to the Podcast.
 			String insertSql = "INSERT INTO Podcast_Has_Host (member_id, podcast_ID) VALUES (" + memberId + ", " + podcastId + ")";
 			ps = connection.prepareStatement(insertSql);
 			ps.executeUpdate();
@@ -33,7 +31,6 @@ public class AssignApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
@@ -43,12 +40,10 @@ public class AssignApi {
 	public static void assignArtistToAlbum(int albumId, int artistId) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			
 			System.out.println(connection);
 			
-			// Query to assign the Album to Artist.
 			String insertSql = "INSERT INTO Artist_Part_of (artist_id, album_id) VALUES (" + artistId + ", " + albumId + ")";
 			ps = connection.prepareStatement(insertSql);
 			ps.executeUpdate();
@@ -58,7 +53,6 @@ public class AssignApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
@@ -68,12 +62,10 @@ public class AssignApi {
 	public static void assignSongToArtist(int artistId, int songId, int is_lead) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			
 			System.out.println(connection);
 			
-			// Query to assign the Album to Artist.
 			String insertSql = "INSERT INTO Artist_contributes (artist_id, song_id, is_lead) VALUES (" + artistId + ", " + songId + ", " + is_lead + ")";
 			ps = connection.prepareStatement(insertSql);
 			ps.executeUpdate();
@@ -83,7 +75,6 @@ public class AssignApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
@@ -92,19 +83,15 @@ public class AssignApi {
 	public static void assignArtistToRecordLabel(int label_id, int member_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// Query to update the specified column in the Artist table.
 			String updateSql = "UPDATE Artist SET label_id = " + label_id + " WHERE member_id = " + member_id;
 			stmt = connection.createStatement();
-			// Execute the update query using Statement object.
 			stmt.execute(updateSql);
 			
 			System.out.println("Artist Assigned to Record Label.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -113,26 +100,21 @@ public class AssignApi {
 	public static void assignPodcastEpisodesToPodcast(int podcast_id, int episode_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// Query to update the specified column in the Artist table.
 			String updateSql = "UPDATE Episode SET podcast_id = " + podcast_id + " WHERE episode_ID = " + episode_id;
 			stmt = connection.createStatement();
-			// Execute the update query using Statement object.
 			stmt.execute(updateSql);
 			
 			System.out.println("Episode Assigned to Podcast.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
 	}
 	
 	
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -142,7 +124,6 @@ public class AssignApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -152,7 +133,6 @@ public class AssignApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -162,7 +142,6 @@ public class AssignApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

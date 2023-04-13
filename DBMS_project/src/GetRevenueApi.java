@@ -20,7 +20,6 @@ public class GetRevenueApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			String insertSql = "SELECT revenue from revenue where month(month) = ?";
@@ -34,7 +33,6 @@ public class GetRevenueApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
@@ -43,7 +41,6 @@ public class GetRevenueApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			String insertSql = "SELECT SUM(revenue) as total_revenue from revenue WHERE YEAR(month) = ?";
@@ -57,13 +54,11 @@ public class GetRevenueApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
 	}
 	
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -73,7 +68,6 @@ public class GetRevenueApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -83,7 +77,6 @@ public class GetRevenueApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -93,7 +86,6 @@ public class GetRevenueApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

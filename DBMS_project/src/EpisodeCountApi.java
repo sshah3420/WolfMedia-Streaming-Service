@@ -21,18 +21,15 @@ public class EpisodeCountApi{
 	public static void updateListeningCount(int episode_id, int count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
 			String updateSql = "UPDATE Episode SET listening_count = '" + count + "' WHERE episode_ID = " + episode_id;
-			// Create Statement Object.
 			stmt = connection.createStatement();
 			stmt.execute(updateSql);
 			System.out.println("Podcast episode listening count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -47,7 +44,6 @@ public class EpisodeCountApi{
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -57,7 +53,6 @@ public class EpisodeCountApi{
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -67,7 +62,6 @@ public class EpisodeCountApi{
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

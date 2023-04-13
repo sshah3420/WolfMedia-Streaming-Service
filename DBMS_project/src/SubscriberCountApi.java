@@ -21,18 +21,15 @@ public class SubscriberCountApi{
 	public static void updateSubscriberCount(int podcast_id, int count) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get connection object
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
 			String updateSql = "UPDATE Podcast SET subscriber_count = '" + count + "' WHERE podcast_ID = " + podcast_id;
-			// Create Statement Object.
 			stmt = connection.createStatement();
 			stmt.execute(updateSql);
 			System.out.println("Podcast subscriber count updated.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -47,7 +44,6 @@ public class SubscriberCountApi{
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -57,7 +53,6 @@ public class SubscriberCountApi{
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -67,7 +62,6 @@ public class SubscriberCountApi{
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {

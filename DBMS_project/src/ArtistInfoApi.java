@@ -17,19 +17,16 @@ public class ArtistInfoApi {
 	public static void enterArtistInfo(int memberId, String firstName, String lastName, String country, String email, String phone, int labelId, String status, String type) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			
 			System.out.println(connection);
 			
 
-			// Query to insert the record into Members table.
 			String insertSql = "INSERT INTO Members (member_id, first_name, last_name, country, email, phone) VALUES (" + memberId + ", '" + firstName + "', '" + lastName + "', '" + country + "', '" + email + "', '" + phone + "')";
 			ps = connection.prepareStatement(insertSql);
 			System.out.println("Member insert successful");
 
 			ps.executeUpdate();
-			// Query to insert the record into Artists table.
 			String insertSql2 = "INSERT INTO Artist (member_id, label_id, status, type) VALUES (" + memberId + ", " + labelId + ", '" + status + "', '" + type + "')";
 			ps2 = connection.prepareStatement(insertSql2);
 			System.out.println("Artist insert successful");
@@ -40,7 +37,6 @@ public class ArtistInfoApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(ps2);
 			close(connection);
@@ -51,21 +47,15 @@ public class ArtistInfoApi {
 	public static void updateArtistInfo(int member_Id, String column, Object value) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
-			// Query to update the specified column in the Artist table.
 			if (column.equals("first_name") || column.equals("last_name") || column.equals("country") || column.equals("email") || column.equals("phone")) {
 				String updateSql = "UPDATE Members SET " + column + " = '" + value + "' WHERE member_id = " + member_Id;
-				// Create Statement Object.
 				stmt = connection.createStatement();
-				// Execute the update query using Statement object.
 				stmt.execute(updateSql);
 			}
 			else {
 				String updateSql2 = "UPDATE Artist SET " + column + " = '" + value + "' WHERE member_id = " + member_Id;
-				// Create Statement Object.
 				stmt = connection.createStatement();
-				// Execute the update query using Statement object.
 				stmt.execute(updateSql2);
 
 			}
@@ -74,7 +64,6 @@ public class ArtistInfoApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
@@ -84,27 +73,21 @@ public class ArtistInfoApi {
 	public static void deleteArtistInfo(int member_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-			// Query to delete the record from ARTICLES table.
 			String deleteSql = "DELETE FROM Artist WHERE member_id = " + member_id;
-			// Create Statement Object.
 			stmt = connection.createStatement();
-			// Execute the delete query using Statement object.
 			stmt.executeUpdate(deleteSql);
 			System.out.println("Article Deleted.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close Statement and Connection Objects.
 			close(stmt);
 			close(connection);
 		}
 	}
 	
 	
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -114,7 +97,6 @@ public class ArtistInfoApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -124,7 +106,6 @@ public class ArtistInfoApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -134,7 +115,6 @@ public class ArtistInfoApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {
