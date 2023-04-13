@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class PodcastEpisodeInfoApi{
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
@@ -21,7 +21,7 @@ public class PodcastEpisodeInfoApi{
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 
-			// Query to insert the record into ARTICLES table.
+			// Query to insert the record into Episode table.
 			String insertSql = "INSERT INTO Episode (podcast_id, episode_ID, ad_count, title, duration, release_date, bonus_rate, listening_count) VALUES (?,?,?,?,?,?,?,?)";
 			// Create PreparedStatement Object for given insert query.
 			ps = connection.prepareStatement(insertSql);
@@ -148,50 +148,50 @@ public class PodcastEpisodeInfoApi{
 	}
 	
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select an operation:\n1. Insert Episode info\n2. Update Episode info\n3. Delete Episode info");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-			case 1:
-				System.out.println("Please enter the Podcast_ID: ");
-			    int PodcastId = scanner.nextInt();
-			    System.out.println("Please enter the Episode_ID: ");
-			    int EpisodeId = scanner.nextInt();
-			    System.out.println("Please enter the Duration: ");
-			    int duration = scanner.nextInt();
-			    System.out.println("Please enter the Release Date: ");
-			    String release_date = scanner.next();
-			    System.out.println("Please enter the Ad Count: ");
-			    int AdCount = scanner.nextInt();
-			    System.out.println("Please enter the Title: ");
-			    String Title = scanner.next();
-			    System.out.println("Please enter the Bonus Rate: ");
-			    double BonusRate= scanner.nextDouble();
-			    System.out.println("Please enter the Listening Count: ");
-			    int ListeningCount = scanner.nextInt();
-				enterPodcastEpisodeInfo(PodcastId, EpisodeId, AdCount, Title, duration, release_date, BonusRate, ListeningCount);
-				break;
-			case 2:
-				System.out.println("Please enter the Episode ID: ");
-			    int Episode_Id = scanner.nextInt();
-			    System.out.println("Please enter the column name you want to edit: ");
-			    String column = scanner.next();
-			    System.out.println("Please enter the Value for the column: ");
-			    Object value = scanner.next();
-				updatePodcastEpisodeInfo(column, value, Episode_Id);
-				break;
-			case 3:
-				System.out.println("Please enter the Episode ID: ");
-			    int Episode_Id2 = scanner.nextInt();
-			    System.out.println("Please enter the Podcast ID: ");
-			    int Podcast_ID = scanner.nextInt();
-				deletePodcastEpisodeInfo(Episode_Id2, Podcast_ID);
-				break;
-			default:
-				System.out.println("Invalid choice.");
-		}
-		
+//		@SuppressWarnings("resource")
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Please select an operation:\n1. Insert Episode info\n2. Update Episode info\n3. Delete Episode info");
+//		int choice = scanner.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				System.out.println("Please enter the Podcast_ID: ");
+//			    int PodcastId = scanner.nextInt();
+//			    System.out.println("Please enter the Episode_ID: ");
+//			    int EpisodeId = scanner.nextInt();
+//			    System.out.println("Please enter the Duration: ");
+//			    int duration = scanner.nextInt();
+//			    System.out.println("Please enter the Release Date: ");
+//			    String release_date = scanner.next();
+//			    System.out.println("Please enter the Ad Count: ");
+//			    int AdCount = scanner.nextInt();
+//			    System.out.println("Please enter the Title: ");
+//			    String Title = scanner.next();
+//			    System.out.println("Please enter the Bonus Rate: ");
+//			    double BonusRate= scanner.nextDouble();
+//			    System.out.println("Please enter the Listening Count: ");
+//			    int ListeningCount = scanner.nextInt();
+//				enterPodcastEpisodeInfo(PodcastId, EpisodeId, AdCount, Title, duration, release_date, BonusRate, ListeningCount);
+//				break;
+//			case 2:
+//				System.out.println("Please enter the Episode ID: ");
+//			    int Episode_Id = scanner.nextInt();
+//			    System.out.println("Please enter the column name you want to edit: ");
+//			    String column = scanner.next();
+//			    System.out.println("Please enter the Value for the column: ");
+//			    Object value = scanner.next();
+//				updatePodcastEpisodeInfo(column, value, Episode_Id);
+//				break;
+//			case 3:
+//				System.out.println("Please enter the Episode ID: ");
+//			    int Episode_Id2 = scanner.nextInt();
+//			    System.out.println("Please enter the Podcast ID: ");
+//			    int Podcast_ID = scanner.nextInt();
+//				deletePodcastEpisodeInfo(Episode_Id2, Podcast_ID);
+//				break;
+//			default:
+//				System.out.println("Invalid choice.");
+//		}
+//		
 	}
 }

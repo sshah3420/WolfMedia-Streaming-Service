@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class getRevenueApi {
+public class GetRevenueApi {
     private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
 	private static final String user = "sshah34";
 	private static final String password = "200474707";
@@ -104,27 +104,27 @@ public class getRevenueApi {
 	}
 	
 	public static void main(String[] args) {
-		// getRevenuePerMonth(4);
-//		getRevenuePerYear(2023);
-		System.out.println("Hello");
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select an operation:\n1. Get revenue by Month\n2. Get revenue by year");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-			case 1:
-				System.out.println("Please enter the Month");
-			    int month = scanner.nextInt();
-			    getRevenuePerMonth(month);
-				break;
-			case 2:
-				System.out.println("Please enter the year");
-				int year = scanner.nextInt();
-				getRevenuePerYear(year);
-				break;
-			default:
-				System.out.println("Invalid choice.");
-		}
+//		// getRevenuePerMonth(4);
+////		getRevenuePerYear(2023);
+//		System.out.println("Hello");
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Please select an operation:\n1. Get revenue by Month\n2. Get revenue by year");
+//		int choice = scanner.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				System.out.println("Please enter the Month");
+//			    int month = scanner.nextInt();
+//			    getRevenuePerMonth(month);
+//				break;
+//			case 2:
+//				System.out.println("Please enter the year");
+//				int year = scanner.nextInt();
+//				getRevenuePerYear(year);
+//				break;
+//			default:
+//				System.out.println("Invalid choice.");
+//		}
 
 	}
 

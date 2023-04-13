@@ -3,7 +3,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class ArtistInfoApi {
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
@@ -30,7 +29,7 @@ public class ArtistInfoApi {
 			System.out.println("Member insert successful");
 
 			ps.executeUpdate();
-
+			// Query to insert the record into Artists table.
 			String insertSql2 = "INSERT INTO Artist (member_id, label_id, status, type) VALUES (" + memberId + ", " + labelId + ", '" + status + "', '" + type + "')";
 			ps2 = connection.prepareStatement(insertSql2);
 			System.out.println("Artist insert successful");
@@ -146,50 +145,50 @@ public class ArtistInfoApi {
 	}
 	
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select an operation:\n1. Insert artist info\n2. Update artist info\n3. Delete artist info");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-			case 1:
-				System.out.println("Please enter the member ID:");
-			    int memberId = scanner.nextInt();
-			    System.out.println("Please enter the first name:");
-			    String firstName = scanner.next();
-			    System.out.println("Please enter the last name:");
-			    String lastName = scanner.next();
-			    System.out.println("Please enter the country:");
-			    String country = scanner.next();
-			    System.out.println("Please enter the email:");
-			    String email = scanner.next();
-			    System.out.println("Please enter the phone number:");
-			    String phone = scanner.next();
-			    System.out.println("Please enter the label ID:");
-			    int labelId = scanner.nextInt();
-			    System.out.println("Please enter the status (active/retired):");
-			    String status = scanner.next();
-			    System.out.println("Please enter the type(Band/musician/composer):");
-			    String type = scanner.next();
-				enterArtistInfo(memberId, firstName, lastName, country, email, phone, labelId, status, type);
-				break;
-			case 2:
-				System.out.println("Please enter the Member ID: ");
-			    int member_Id = scanner.nextInt();
-			    System.out.println("Please enter the column name you want to edit: ");
-			    String column = scanner.next();
-			    System.out.println("Please enter the Value for the column: ");
-			    Object value = scanner.next();
-				updateArtistInfo(member_Id, column, value );
-				break;
-			case 3:
-				System.out.println("Please enter the Member ID: ");
-			    int member_Id2 = scanner.nextInt();
-				deleteArtistInfo(member_Id2);
-				break;
-			default:
-				System.out.println("Invalid choice.");
-		}
-		
+//		@SuppressWarnings("resource")
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Please select an operation:\n1. Insert artist info\n2. Update artist info\n3. Delete artist info");
+//		int choice = scanner.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				System.out.println("Please enter the member ID:");
+//			    int memberId = scanner.nextInt();
+//			    System.out.println("Please enter the first name:");
+//			    String firstName = scanner.next();
+//			    System.out.println("Please enter the last name:");
+//			    String lastName = scanner.next();
+//			    System.out.println("Please enter the country:");
+//			    String country = scanner.next();
+//			    System.out.println("Please enter the email:");
+//			    String email = scanner.next();
+//			    System.out.println("Please enter the phone number:");
+//			    String phone = scanner.next();
+//			    System.out.println("Please enter the label ID:");
+//			    int labelId = scanner.nextInt();
+//			    System.out.println("Please enter the status (active/retired):");
+//			    String status = scanner.next();
+//			    System.out.println("Please enter the type(Band/musician/composer):");
+//			    String type = scanner.next();
+//				enterArtistInfo(memberId, firstName, lastName, country, email, phone, labelId, status, type);
+//				break;
+//			case 2:
+//				System.out.println("Please enter the Member ID: ");
+//			    int member_Id = scanner.nextInt();
+//			    System.out.println("Please enter the column name you want to edit: ");
+//			    String column = scanner.next();
+//			    System.out.println("Please enter the Value for the column: ");
+//			    Object value = scanner.next();
+//				updateArtistInfo(member_Id, column, value );
+//				break;
+//			case 3:
+//				System.out.println("Please enter the Member ID: ");
+//			    int member_Id2 = scanner.nextInt();
+//				deleteArtistInfo(member_Id2);
+//				break;
+//			default:
+//				System.out.println("Invalid choice.");
+//		}
+//		
 	}
 }

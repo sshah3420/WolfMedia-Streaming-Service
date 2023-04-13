@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class PodcastHostInfoApi {
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
@@ -146,46 +146,46 @@ public class PodcastHostInfoApi {
 	}
 	
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select an operation:\n1. Insert Host info\n2. Update Host info\n3. Delete Host info");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-			case 1:
-				System.out.println("Please enter the member ID:");
-			    int memberId = scanner.nextInt();
-			    System.out.println("Please enter the first name:");
-			    String firstName = scanner.next();
-			    System.out.println("Please enter the last name:");
-			    String lastName = scanner.next();
-			    System.out.println("Please enter the country:");
-			    String country = scanner.next();
-			    System.out.println("Please enter the email:");
-			    String email = scanner.next();
-			    System.out.println("Please enter the phone number:");
-			    String phone = scanner.next();
-			    System.out.println("Please enter the City:");
-			    String city = scanner.next();
-				enterPodcastHostInfo(memberId, firstName, lastName, country, email, phone, city);
-				break;
-			case 2:
-				System.out.println("Please enter the Member ID: ");
-			    int member_Id = scanner.nextInt();
-			    System.out.println("Please enter the column name you want to edit: ");
-			    String column = scanner.next();
-			    System.out.println("Please enter the Value for the column: ");
-			    Object value = scanner.next();
-				updatePodcastHostInfo(member_Id, column, value );
-				break;
-			case 3:
-				System.out.println("Please enter the Member ID: ");
-			    int member_Id2 = scanner.nextInt();
-				deletePodcastHostInfo(member_Id2);
-				break;
-			default:
-				System.out.println("Invalid choice.");
-		}
-		
+//		@SuppressWarnings("resource")
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Please select an operation:\n1. Insert Host info\n2. Update Host info\n3. Delete Host info");
+//		int choice = scanner.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				System.out.println("Please enter the member ID:");
+//			    int memberId = scanner.nextInt();
+//			    System.out.println("Please enter the first name:");
+//			    String firstName = scanner.next();
+//			    System.out.println("Please enter the last name:");
+//			    String lastName = scanner.next();
+//			    System.out.println("Please enter the country:");
+//			    String country = scanner.next();
+//			    System.out.println("Please enter the email:");
+//			    String email = scanner.next();
+//			    System.out.println("Please enter the phone number:");
+//			    String phone = scanner.next();
+//			    System.out.println("Please enter the City:");
+//			    String city = scanner.next();
+//				enterPodcastHostInfo(memberId, firstName, lastName, country, email, phone, city);
+//				break;
+//			case 2:
+//				System.out.println("Please enter the Member ID: ");
+//			    int member_Id = scanner.nextInt();
+//			    System.out.println("Please enter the column name you want to edit: ");
+//			    String column = scanner.next();
+//			    System.out.println("Please enter the Value for the column: ");
+//			    Object value = scanner.next();
+//				updatePodcastHostInfo(member_Id, column, value );
+//				break;
+//			case 3:
+//				System.out.println("Please enter the Member ID: ");
+//			    int member_Id2 = scanner.nextInt();
+//				deletePodcastHostInfo(member_Id2);
+//				break;
+//			default:
+//				System.out.println("Invalid choice.");
+//		}
+//		
 	}
 }

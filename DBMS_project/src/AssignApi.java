@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class AssignApi {
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
@@ -89,6 +89,48 @@ public class AssignApi {
 		}
 	}
 	
+	public static void assignArtistToRecordLabel(int label_id, int member_id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get Connection object.
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Query to update the specified column in the Artist table.
+			String updateSql = "UPDATE Artist SET label_id = " + label_id + " WHERE member_id = " + member_id;
+			stmt = connection.createStatement();
+			// Execute the update query using Statement object.
+			stmt.execute(updateSql);
+			
+			System.out.println("Artist Assigned to Record Label.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close Statement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+	
+	public static void assignPodcastEpisodesToPodcast(int podcast_id, int episode_id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			// Get Connection object.
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			// Query to update the specified column in the Artist table.
+			String updateSql = "UPDATE Episode SET podcast_id = " + podcast_id + " WHERE episode_ID = " + episode_id;
+			stmt = connection.createStatement();
+			// Execute the update query using Statement object.
+			stmt.execute(updateSql);
+			
+			System.out.println("Episode Assigned to Podcast.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Close Statement and Connection Objects.
+			close(stmt);
+			close(connection);
+		}
+	}
+	
 	
 	// method to close Connection.
 	static void close(Connection connection) {
@@ -131,38 +173,38 @@ public class AssignApi {
 	}
 	
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please select an Assign operation:\n1. Assign Host to Podcast info\n2. Assign Album to Artist info\n3. Assign Song to Artist");
-		int choice = scanner.nextInt();
-
-		switch (choice) {
-			case 1:
-				System.out.println("Please enter the Member ID/ Host ID:");
-			    int memberId = scanner.nextInt();
-			    System.out.println("Please enter the Podcast ID:");
-			    int podcast_id = scanner.nextInt();
-			    assignPodcastHostToPodcast(memberId, podcast_id);
-				break;
-			case 2:
-				System.out.println("Please enter the Album ID:");
-			    int album_id = scanner.nextInt();
-			    System.out.println("Please enter the Podcast ID:");
-			    int artist_id = scanner.nextInt();
-			    assignArtistToAlbum(album_id, artist_id);
-				break;
-			case 3:
-				System.out.println("Please enter the Member ID/ Artist ID:");
-			    int artistId = scanner.nextInt();
-			    System.out.println("Please enter the Song ID:");
-			    int songId = scanner.nextInt();
-			    System.out.println("Please enter artist's contribution ( 1: Lead, 0: Guest): ");
-			    int is_leadId = scanner.nextInt();
-			    assignSongToArtist(artistId, songId, is_leadId);
-				break;
-			default:
-				System.out.println("Invalid choice.");
-		}
-		
+//		@SuppressWarnings("resource")
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Please select an Assign operation:\n1. Assign Host to Podcast info\n2. Assign Album to Artist info\n3. Assign Song to Artist");
+//		int choice = scanner.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				System.out.println("Please enter the Member ID/ Host ID:");
+//			    int memberId = scanner.nextInt();
+//			    System.out.println("Please enter the Podcast ID:");
+//			    int podcast_id = scanner.nextInt();
+//			    assignPodcastHostToPodcast(memberId, podcast_id);
+//				break;
+//			case 2:
+//				System.out.println("Please enter the Album ID:");
+//			    int album_id = scanner.nextInt();
+//			    System.out.println("Please enter the Podcast ID:");
+//			    int artist_id = scanner.nextInt();
+//			    assignArtistToAlbum(album_id, artist_id);
+//				break;
+//			case 3:
+//				System.out.println("Please enter the Member ID/ Artist ID:");
+//			    int artistId = scanner.nextInt();
+//			    System.out.println("Please enter the Song ID:");
+//			    int songId = scanner.nextInt();
+//			    System.out.println("Please enter artist's contribution ( 1: Lead, 0: Guest): ");
+//			    int is_leadId = scanner.nextInt();
+//			    assignSongToArtist(artistId, songId, is_leadId);
+//				break;
+//			default:
+//				System.out.println("Invalid choice.");
+//		}
+//		
 	}
 }

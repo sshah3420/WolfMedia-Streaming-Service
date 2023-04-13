@@ -3,9 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
-public class artistMonthlyListenersApi{
+public class ArtistMonthlyListenersApi{
 	
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
 	private static final String user = "sshah34";
@@ -110,45 +110,36 @@ public class artistMonthlyListenersApi{
 		}
 	}
 	
-	public static void main(String[] args) {
-//		Scanner scanner = new Scanner(System.in);
-		// int roleChoice = -1;
-		System.out.println("Hello");
-//		Homework2.enterArtistMonthlyListeners(2001, -99);
-//		Homework2.updateArtistMonthlyListeners(2001, -100);
-		
-	}
 
 	public static void main(String[] args) {
-				System.out.println("Hello");
-		
-				Scanner scanner = new Scanner(System.in);
-				System.out.println("Please select an operation:\n1. Enter Artist Monthly Listeners info\n2. Update Artist Monthly Listeners");
-				int choice = scanner.nextInt();
-		
-				switch (choice) {
-					case 1:
-						System.out.println("Please enter the Member ID/ Artist ID:");
-						int artistId = scanner.nextInt();
-						System.out.println("Please enter its Song Count");
-						int song_id = scanner.nextInt();
-						enterArtistMonthlyListeners(artistId, song_id);
-						break;
-					case 2:
-						System.out.println("Please enter the Member ID/ Artist ID:");
-						 int artist_Id = scanner.nextInt();
-						System.out.println("Please enter its Song Count:");
-						int songid = scanner.nextInt();
-						updateArtistMonthlyListeners(artist_Id, songid);
-						break;
-					default:
-						System.out.println("Invalid choice.");
-				}
-
-				// Homework2.enterArtistMonthlyListeners(2001, -99);
-				// Homework2.enterUpdatePodcastRating(5001, 4.5);
-				
-				
+//				System.out.println("Hello");
+//				Scanner scanner = new Scanner(System.in);
+//				System.out.println("Please select an operation:\n1. Enter Artist Monthly Listeners info\n2. Update Artist Monthly Listeners");
+//				int choice = scanner.nextInt();
+//		
+//				switch (choice) {
+//					case 1:
+//						System.out.println("Please enter the Member ID/ Artist ID:");
+//						int artistId = scanner.nextInt();
+//						System.out.println("Please enter its Song Count");
+//						int song_id = scanner.nextInt();
+//						enterArtistMonthlyListeners(artistId, song_id);
+//						break;
+//					case 2:
+//						System.out.println("Please enter the Member ID/ Artist ID:");
+//						 int artist_Id = scanner.nextInt();
+//						System.out.println("Please enter its Song Count:");
+//						int songid = scanner.nextInt();
+//						updateArtistMonthlyListeners(artist_Id, songid);
+//						break;
+//					default:
+//						System.out.println("Invalid choice.");
+//				}
+//
+//				// Homework2.enterArtistMonthlyListeners(2001, -99);
+//				// Homework2.enterUpdatePodcastRating(5001, 4.5);
+//				
+//				
 			}
 }
 

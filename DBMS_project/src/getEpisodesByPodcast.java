@@ -3,11 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
-import org.mariadb.jdbc.client.result.ResultSetMetaData;
-
-public class getEpisodesByPodcast{
+public class GetEpisodesByPodcast{
 	
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
 	private static final String user = "sshah34";
@@ -98,10 +96,10 @@ public class getEpisodesByPodcast{
 	}
 	public static void main(String[] args) {
 		
-				System.out.println("Hello");
-				Scanner scanner = new Scanner(System.in);
-				System.out.println("Please enter the Podcast ID:");
-				int podcastId = scanner.nextInt();
-				getEpisodesByPodcast(podcastId);
+//				System.out.println("Hello");
+//				Scanner scanner = new Scanner(System.in);
+//				System.out.println("Please enter the Podcast ID:");
+//				int podcastId = scanner.nextInt();
+//				getEpisodesByPodcast(podcastId);
 			}
 }
