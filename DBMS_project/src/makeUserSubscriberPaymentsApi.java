@@ -15,23 +15,26 @@ public class makeUserSubscriberPaymentsApi {
 	public static Connection connection = null;
 	public static Statement stmt = null;
 	public static PreparedStatement ps = null;
+    public static PreparedStatement ps2 = null;
 	public static ResultSet rs = null;
 
-    public static void makeUserSubscriberPayments(int value, int month, int year) {
+    public static void makeUserSubscriberPayments(int user_id) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
 			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
-            LocalDateTime ldt = LocalDateTime.of(year, month, 1, 0, 0, 0);
-            // Convert the LocalDateTime object to a Timestamp
-	        Timestamp timestamp = Timestamp.valueOf(ldt);
-			String insertSql = "INSERT INTO User_payment(user_id, timestamp, amount, is_paid) VALUES (?,?,10,1);";
+			String insertSql = "INSERT INTO User_payment(user_id, amount, is_paid) VALUES (?,10,1);";
 			ps = connection.prepareStatement(insertSql);
-            ps.setInt(1, value);
-            ps.setTimestamp(2, Timestamp);
+            ps.setInt(1, user_id);
 			ps.executeUpdate();
+            int currentMonth = Integer.parseInt(new java.text.SimpleDateFormat("MM").format(new java.util.Date()));
+            String insertSql2 = "Update revenue set revenue = revenue + 10 where month(month) = ?;";
+            ps2 = connection.prepareStatement(insertSql2);
+            ps2.setInt(1, currentMonth);
+            ps2.executeUpdate();
+
 			System.out.println("Subscription Done");
 			
 		} catch (Exception e) {
@@ -39,6 +42,7 @@ public class makeUserSubscriberPaymentsApi {
 		} finally {
 			// Close PreparedStatement and Connection Objects.
 			close(ps);
+            close(ps2);
 			close(connection);
 		}
 	}
@@ -87,12 +91,8 @@ public class makeUserSubscriberPaymentsApi {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Please enter the User ID:");
                 int userId = scanner.nextInt();
-                System.out.println("Please enter the month of payment:");
-                int month = scanner.nextInt();
-                System.out.println("Please enter the year of payment:");
-                int year = scanner.nextInt();
 
-                makeUserSubscriberPayments(userId, month, year);
+                makeUserSubscriberPayments(userId);
             }
 
     
