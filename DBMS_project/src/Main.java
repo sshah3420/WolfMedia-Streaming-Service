@@ -321,14 +321,10 @@ public class Main {
 
             		switch (choice) {
             			case 1:
-            				System.out.println("Please enter the Month");
-            			    int month = scanner.nextInt();
-            			    GetRevenueApi.getRevenuePerMonth(month);
+            			    GetRevenueApi.getRevenuePerMonth();
             				break;
             			case 2:
-            				System.out.println("Please enter the year");
-            				int year = scanner.nextInt();
-            				GetRevenueApi.getRevenuePerYear(year);
+            				GetRevenueApi.getRevenuePerYear();
             				break;
             			default:
             				System.out.println("Invalid choice.");

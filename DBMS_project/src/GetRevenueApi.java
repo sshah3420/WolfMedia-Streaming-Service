@@ -16,44 +16,69 @@ public class GetRevenueApi {
 	public static ResultSet rs = null;
 	public static ResultSet rs1 = null;
 
-	public static void getRevenuePerMonth(int month) {
+	public static void getRevenuePerMonth() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
+			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
-			String insertSql = "SELECT revenue from revenue where month(month) = ?";
+			String insertSql = "SELECT DATE_FORMAT(month, '%M') AS month_name, SUM(revenue) AS total_revenue FROM revenue GROUP BY month_name;";
 			ps = connection.prepareStatement(insertSql);
-            ps.setInt(1, month);
 			ResultSet rs1 = ps.executeQuery();
-			 while (rs1.next()) {
-	                double revenue = rs1.getInt("revenue");
-	                System.out.println("Revenue: " + revenue);
-	            }
+			java.sql.ResultSetMetaData rsmd = rs1.getMetaData();
+			int columnsNumber = rsmd.getColumnCount();
+			for(int i = 1; i <= columnsNumber; i++) {
+				if (i > 1) System.out.print(",  ");
+				System.out.print(rsmd.getColumnName(i));
+			}
+			while(rs1.next()) {
+				System.out.println();
+				for(int i = 1; i <= columnsNumber; i++) {
+					if (i > 1) System.out.print(":  ");
+			        String columnValue = rs1.getString(i);
+			        System.out.print(" " + columnValue);
+				}
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
 	}
-	public static void getRevenuePerYear(int year) {
+	public static void getRevenuePerYear() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
+			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
-			String insertSql = "SELECT SUM(revenue) as total_revenue from revenue WHERE YEAR(month) = ?";
+			String insertSql = "SELECT DATE_FORMAT(month, '%Y') AS month_name, SUM(revenue) AS total_revenue FROM revenue GROUP BY month_name;";
+			
 			ps = connection.prepareStatement(insertSql);
-            ps.setInt(1, year);
 			ResultSet rs1 = ps.executeQuery();
-			 while (rs1.next()) {
-	                double revenue = rs1.getInt("total_revenue");
-	                System.out.println("Revenue: " + revenue);
-	            }
+			java.sql.ResultSetMetaData rsmd = rs1.getMetaData();
+			int columnsNumber = rsmd.getColumnCount();
+			for(int i = 1; i <= columnsNumber; i++) {
+				if (i > 1) System.out.print(",  ");
+				System.out.print(rsmd.getColumnName(i));
+			}
+			while(rs1.next()) {
+				System.out.println();
+				for(int i = 1; i <= columnsNumber; i++) {
+					if (i > 1) System.out.print(":  ");
+			        String columnValue = rs1.getString(i);
+			        System.out.print(" " + columnValue);
+				}
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
