@@ -3,11 +3,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
-import java.time.LocalDateTime;
+//import java.util.Scanner;
+//import java.time.LocalDateTime;
 
 
-public class makeUserSubscriberPaymentsApi {
+public class MakeUserSubscriberPaymentsApi {
     private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
 	private static final String user = "sshah34";
 	private static final String password = "200474707";
@@ -22,7 +22,6 @@ public class makeUserSubscriberPaymentsApi {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 			String insertSql = "INSERT INTO User_payment(user_id, amount, is_paid) VALUES (?,10,1);";
@@ -40,13 +39,11 @@ public class makeUserSubscriberPaymentsApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
             close(ps2);
 			close(connection);
 		}
 	}
-    // method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -56,7 +53,6 @@ public class makeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -66,7 +62,6 @@ public class makeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -76,7 +71,6 @@ public class makeUserSubscriberPaymentsApi {
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {
@@ -87,12 +81,12 @@ public class makeUserSubscriberPaymentsApi {
 	}
     public static void main(String[] args) {
       
-                System.out.println("Hello");
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Please enter the User ID:");
-                int userId = scanner.nextInt();
-
-                makeUserSubscriberPayments(userId);
+//                System.out.println("Hello");
+//                Scanner scanner = new Scanner(System.in);
+//                System.out.println("Please enter the User ID:");
+//                int userId = scanner.nextInt();
+//
+//                makeUserSubscriberPayments(userId);
             }
 
     

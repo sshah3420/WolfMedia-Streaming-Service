@@ -3,11 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
+//import java.util.Scanner;
 
-import org.mariadb.jdbc.client.result.ResultSetMetaData;
-
-public class getEpisodesByPodcast{
+public class GetSongsByAlbumApi {
 	
 	private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sshah34";
 	private static final String user = "sshah34";
@@ -19,15 +17,14 @@ public class getEpisodesByPodcast{
 	public static ResultSet rs = null;
 	public static ResultSet rs1 = null;
 
-    public static void getEpisodesByPodcast(int value) {
+    public static void getSongsbyAlbum(int value) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// Get Connection object.
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
 
-			String insertSql = "select * from Episode where podcast_id =" + value + ";";
+			String insertSql = "SELECT * FROM Song WHERE album_id = " + value + ";";
 			ps = connection.prepareStatement(insertSql);
 			
 			
@@ -51,13 +48,11 @@ public class getEpisodesByPodcast{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Close PreparedStatement and Connection Objects.
 			close(ps);
 			close(connection);
 		}
 	}
 
-	// method to close Connection.
 	static void close(Connection connection) {
 		if (connection != null) {
 			try {
@@ -67,7 +62,6 @@ public class getEpisodesByPodcast{
 		}
 	}
 
-	// method to Statement.
 	static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -77,7 +71,6 @@ public class getEpisodesByPodcast{
 		}
 	}
 
-	// method to close PreparedStatement.
 	static void close(PreparedStatement statement) {
 		if (statement != null) {
 			try {
@@ -87,7 +80,6 @@ public class getEpisodesByPodcast{
 		}
 	}
 
-	// method to close ResultSet
 	static void close(ResultSet result) {
 		if (result != null) {
 			try {
@@ -97,11 +89,10 @@ public class getEpisodesByPodcast{
 		}
 	}
 	public static void main(String[] args) {
-		
-				System.out.println("Hello");
-				Scanner scanner = new Scanner(System.in);
-				System.out.println("Please enter the Podcast ID:");
-				int podcastId = scanner.nextInt();
-				getEpisodesByPodcast(podcastId);
+//				System.out.println("Hello");
+//				Scanner scanner = new Scanner(System.in);
+//				System.out.println("Please enter the Album ID:");
+//				int albumId = scanner.nextInt();
+//				getSongsbyAlbum(albumId);
 			}
 }
