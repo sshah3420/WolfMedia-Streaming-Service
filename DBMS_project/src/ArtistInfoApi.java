@@ -75,7 +75,7 @@ public class ArtistInfoApi {
 			Class.forName("org.mariadb.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 
-			String deleteSql = "DELETE FROM Artist WHERE member_id = " + member_id;
+			String deleteSql = "DELETE FROM Members WHERE member_id = " + member_id;
 			stmt = connection.createStatement();
 			stmt.executeUpdate(deleteSql);
 			System.out.println("Article Deleted.");
