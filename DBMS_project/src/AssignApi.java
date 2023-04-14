@@ -114,6 +114,23 @@ public class AssignApi {
 		}
 	}
 	
+	public static void assignSongToAlbum(int Song_id, int Album_id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			connection = DriverManager.getConnection(jdbcURL, user, password);
+			String updateSql = "UPDATE Song SET album_id = " + Album_id + " WHERE song_ID = " + Song_id;
+			stmt = connection.createStatement();
+			stmt.execute(updateSql);
+			
+			System.out.println("Song Assigned to Album.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+			close(connection);
+		}
+	}
+	
 	
 	static void close(Connection connection) {
 		if (connection != null) {

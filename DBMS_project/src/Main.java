@@ -193,7 +193,7 @@ public class Main {
                 case 5:
                 	System.out.println("Assign Operation selected");
                     System.out.println("   ");              
-                    System.out.println("Please select an Assign operation:\n1. Assign Host to Podcast info\n2. Assign Album to Artist info\n3. Assign Song to Artist info\n4. Assign Artist to Record Label info\n5. Assign Episode to Podcast");
+                    System.out.println("Please select an Assign operation:\n1. Assign Host to Podcast info\n2. Assign Album to Artist info\n3. Assign Song to Artist info\n4. Assign Artist to Record Label info\n5. Assign Episode to Podcast info\n6. Assign Song to Album");
             		choice = scanner.nextInt();
 
             		switch (choice) {
@@ -233,6 +233,13 @@ public class Main {
             			    System.out.println("Please enter the Episode ID:");
             			    int episode_id = scanner.nextInt();
             			    AssignApi.assignPodcastEpisodesToPodcast(podcast_Id, episode_id);
+            				break;
+            			case 6:
+            				System.out.println("Please enter the Song ID:");
+            			    int Song_Id = scanner.nextInt();
+            			    System.out.println("Please enter the Album ID:");
+            			    int Album_id = scanner.nextInt();
+            			    AssignApi.assignSongToAlbum(Song_Id, Album_id);
             				break;
             			default:
             				System.out.println("Invalid choice.");
