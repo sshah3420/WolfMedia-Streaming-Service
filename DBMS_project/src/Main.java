@@ -305,7 +305,7 @@ public class Main {
                     break;
                     
                 case 10:
-                    System.out.println("Get Songs By Album Selected");
+                    System.out.println("Enter /Update Ratings for Podcast");
     				System.out.println("Please enter the Podcast ID:");
     				int podcast_Id = scanner.nextInt();
     				System.out.println("Please enter the Rating:");
@@ -354,7 +354,7 @@ public class Main {
                     System.out.println("   "); 
             		System.out.print("Enter Song Id:");
             		int song_id = scanner.nextInt();
-            		System.out.println("Enter New Total Subscriber Count:");
+            		System.out.println("Enter New Count:");
             		int Count = scanner.nextInt();
             		PlayCount.updatePlayCount(song_id, Count);
             		PlayCount.updateSongMonthCount(song_id, Count);
@@ -446,7 +446,7 @@ public class Main {
                 case 19:
                     System.out.println("Get Payment to Host/ Artist/ Label Selected");
                     System.out.println("   "); 
-                    System.out.println("Please enter period:");
+                    System.out.println("Enter the desired period below");
         			System.out.println("Enter start month:");
         			int startMonth = scanner.nextInt();
         			System.out.println("Enter start year:");
