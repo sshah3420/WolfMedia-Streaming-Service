@@ -17,10 +17,11 @@ public class Main {
             			case 1:
             				System.out.println("Please enter the member ID:");
             			    int memberId = scanner.nextInt();
+            			    scanner.nextLine();
             			    System.out.println("Please enter the first name:");
-            			    String firstName = scanner.next();
+            			    String firstName = scanner.nextLine();
             			    System.out.println("Please enter the last name:");
-            			    String lastName = scanner.next();
+            			    String lastName = scanner.nextLine();
             			    System.out.println("Please enter the country:");
             			    String country = scanner.next();
             			    System.out.println("Please enter the email:");
@@ -63,8 +64,9 @@ public class Main {
             			case 1:
             				System.out.println("Please enter the song_ID: ");
             			    int songId = scanner.nextInt();
+            			    scanner.nextLine();
             			    System.out.println("Please enter the Title: ");
-            			    String title = scanner.next();
+            			    String title = scanner.nextLine();
             			    System.out.println("Please enter the Duration: ");
             			    int duration = scanner.nextInt();
             			    System.out.println("Please enter the Release Date: ");
@@ -113,10 +115,11 @@ public class Main {
             			case 1:
             				System.out.println("Please enter the member ID:");
             			    int memberId = scanner.nextInt();
+            			    scanner.nextLine();
             			    System.out.println("Please enter the first name:");
-            			    String firstName = scanner.next();
+            			    String firstName = scanner.nextLine();
             			    System.out.println("Please enter the last name:");
-            			    String lastName = scanner.next();
+            			    String lastName = scanner.nextLine();
             			    System.out.println("Please enter the country:");
             			    String country = scanner.next();
             			    System.out.println("Please enter the email:");
@@ -162,8 +165,9 @@ public class Main {
             			    String release_date = scanner.next();
             			    System.out.println("Please enter the Ad Count: ");
             			    int AdCount = scanner.nextInt();
+            			    scanner.nextLine();
             			    System.out.println("Please enter the Title: ");
-            			    String Title = scanner.next();
+            			    String Title = scanner.nextLine();
             			    System.out.println("Please enter the Bonus Rate: ");
             			    double BonusRate= scanner.nextDouble();
             			    System.out.println("Please enter the Listening Count: ");
