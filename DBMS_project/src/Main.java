@@ -336,9 +336,9 @@ public class Main {
                     System.out.println("Update Episode Listening Count selected");
                     System.out.println("   "); 
             		System.out.print("Enter Episode Id:");
-            		int episode_id = Integer.parseInt(scanner.nextLine());
+            		int episode_id = scanner.nextInt();
             		System.out.println("Enter New Total Listening Count:");
-            		int count = Integer.parseInt(scanner.nextLine());
+            		int count = scanner.nextInt();
             		EpisodeCountApi.updateListeningCount(episode_id, count);
                     break;
                     
@@ -346,9 +346,9 @@ public class Main {
                     System.out.println("Update Song Play count / Monthly selected");
                     System.out.println("   "); 
             		System.out.print("Enter Song Id:");
-            		int song_id = Integer.parseInt(scanner.nextLine());
+            		int song_id = scanner.nextInt();
             		System.out.println("Enter New Total Subscriber Count:");
-            		int Count = Integer.parseInt(scanner.nextLine());
+            		int Count = scanner.nextInt();
             		PlayCount.updatePlayCount(song_id, Count);
             		PlayCount.updateSongMonthCount(song_id, Count);
                     break;
@@ -357,7 +357,7 @@ public class Main {
                     System.out.println("Payment to Podcast Host Selected");
                     System.out.println("   "); 
                     System.out.print("Enter Host Id to make payment:");
-        			int song_Id = Integer.parseInt(scanner.nextLine());
+        			int song_Id = scanner.nextInt();
         	        System.out.print("Enter a month (1-12): ");
         	        int month = scanner.nextInt();
         	        // Prompt the user to input a year
@@ -373,9 +373,9 @@ public class Main {
                     System.out.println("Update Podcast Subscriber Count Selected");
                     System.out.println("   "); 
             		System.out.print("Enter Podcast Id:");
-            		int podcast_id = Integer.parseInt(scanner.nextLine());
+            		int podcast_id = scanner.nextInt();
             		System.out.println("Enter New Total Subscriber Count:");
-            		int count_no = Integer.parseInt(scanner.nextLine());
+            		int count_no = scanner.nextInt();
             		SubscriberCountApi.updateSubscriberCount(podcast_id, count_no);
                     break;
                     
@@ -441,13 +441,13 @@ public class Main {
                     System.out.println("   "); 
                     System.out.println("Please enter period:");
         			System.out.println("Enter start month:");
-        			int startMonth = Integer.parseInt(scanner.nextLine());
+        			int startMonth = scanner.nextInt();
         			System.out.println("Enter start year:");
-        			int startYear = Integer.parseInt(scanner.nextLine());
+        			int startYear = scanner.nextInt();
         			System.out.println("Enter end month:");
-        			int endMonth = Integer.parseInt(scanner.nextLine());
+        			int endMonth = scanner.nextInt();
         			System.out.println("Enter end year:");
-        			int endYear = Integer.parseInt(scanner.nextLine());
+        			int endYear = scanner.nextInt();
         			
         			System.out.println("Please enter 1.Host 2.Artist 3.Label:");
         			choice = scanner.nextInt();
