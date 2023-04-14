@@ -146,7 +146,7 @@ public class Main {
             				break;
             			default:
             				System.out.println("Invalid choice.");
-            		}                    break;
+}                    break;
                 case 4:
                 	System.out.println("Insert/Update/Delete Episode selected");
                     System.out.println("   ");
@@ -247,11 +247,12 @@ public class Main {
             				break;
             			default:
             				System.out.println("Invalid choice.");
-            		}                    break;
+            		} 
+            			break;
                 case 6:
                 	System.out.println("Enter/Update Artist Monthly Listeners selected");
                     System.out.println("   "); 
-                    System.out.println("Please select an operation:\n1. Enter Artist Monthly Listeners info\n2. Update Artist Monthly Listeners");
+                	System.out.println("Please select an operation:\n1. Enter Artist Monthly Listeners info\n2. Update Artist Monthly Listeners");
     				choice = scanner.nextInt();
     		
     				switch (choice) {
@@ -260,14 +261,22 @@ public class Main {
     						int artistId = scanner.nextInt();
     						System.out.println("Please enter its Song Count");
     						int song_id = scanner.nextInt();
-    						ArtistMonthlyListenersApi.enterArtistMonthlyListeners(artistId, song_id);
+    						System.out.println("Please enter its Month");
+    						int month = scanner.nextInt();
+    						System.out.println("Please enter Year");
+    						int year = scanner.nextInt();
+    						ArtistMonthlyListenersApi.enterArtistMonthlyListeners(artistId, song_id, month, year);
     						break;
     					case 2:
     						System.out.println("Please enter the Member ID/ Artist ID:");
     						 int artist_Id = scanner.nextInt();
     						System.out.println("Please enter its Song Count:");
     						int songid = scanner.nextInt();
-    						ArtistMonthlyListenersApi.updateArtistMonthlyListeners(artist_Id, songid);
+    						System.out.println("Please enter its Month");
+    						int Month = scanner.nextInt();
+    						System.out.println("Please enter Year");
+    						int Year = scanner.nextInt();
+    						ArtistMonthlyListenersApi.updateArtistMonthlyListeners(artist_Id, songid, Month, Year);
     						break;
     					default:
     						System.out.println("Invalid choice.");
@@ -324,6 +333,7 @@ public class Main {
             			default:
             				System.out.println("Invalid choice.");
             		}
+            		break;
             		
                 case 12:
                     System.out.println("User Make Subscription Payment Selected");
@@ -331,6 +341,7 @@ public class Main {
                     System.out.println("Please enter the User ID:");
                     int userId = scanner.nextInt();
                     MakeUserSubscriberPaymentsApi.makeUserSubscriberPayments(userId);
+                    break;
                     
                 case 13:
                     System.out.println("Update Episode Listening Count selected");
