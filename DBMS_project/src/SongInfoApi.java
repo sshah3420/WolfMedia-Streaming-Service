@@ -22,7 +22,6 @@ public class SongInfoApi {
 			System.out.println("start");
 			connection = DriverManager.getConnection(jdbcURL, user, password);
 			System.out.println(connection);
-			System.out.println("start2");
 
 			String insertSql = "INSERT INTO Song (song_ID, title, duration, release_date, language, country, royalty_rate, label_id, album_id, track_num, play_count) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			ps = connection.prepareStatement(insertSql);
