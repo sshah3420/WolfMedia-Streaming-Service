@@ -1,7 +1,7 @@
 # dbms-project
 For our project in the course, CSC540 - Database Management Concepts and Systems, we design and build a database system for WolfMedia, a media streaming service. This is an audio and media streaming service, like Spotify or Apple Music. The database system will be used by the administrators and management of the streaming service and should maintain information on at least the following:
 
---Song: song title, artist(s), duration, genre(s), album, play count, release date, release country, language, royalty rate, collaborators (guest artist), royalty_paid(status of whether the current royalty has been paid out)  
+- Song: song title, artist(s), duration, genre(s), album, play count, release date, release country, language, royalty rate, collaborators (guest artist), royalty_paid(status of whether the current royalty has been paid out)  
 - Artist: name, collaboration(s), status (active/retired), type (Band/musician/composer), country, primary genre, monthly listeners, album(s), record label  
 - Record label: record label name, contracted artist(s),  
 - Album: album name, artist(s), song(s), track number(s), release year, Edition (special, limited, collector’s edition)  
